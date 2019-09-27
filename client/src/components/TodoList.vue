@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>{{ title }}</h1>
     <ul>
-      <li v-for="todo in todos"> {{ todo.item }}</li>
+      <li v-bind:class="{ 'done-todo': todo.done }" v-for="todo in todos" v-bind:key="todo.id" @click="toggleTodo(todo.id)"> {{ todo.item }}</li>
     </ul>
     <input v-model="inputValue"/>
     <button @click="handleAddTodoClick">Add New Todo</button>
@@ -17,25 +17,32 @@ export default {
   props: ['title'],
   data() {
     return {
-      todos: ['a', 'b', 'c'],
+      todos: [],
       inputValue: ''
     }
   },
   methods: {
+    getAllTodos() {
+      axios.get('/todos').then( res => this.todos = res.data.items);
+    },
     handleAddTodoClick() {
       axios.post('/todo', { item: this.inputValue } )
-        .then(() => {
-          axios.get('/todos').then( res => this.todos = res.data.items);
-        })
+        .then(() => this.getAllTodos());
       this.inputValue = '';
+    },
+    toggleTodo(id) {
+      axios.patch('/todo', {id: id})
+      .then(() => this.getAllTodos())
     }
   },
   mounted() {
-    axios.get('/todos').then( res => this.todos = res.data.items);
+    this.getAllTodos();
   }
 }
 </script>
+<style >
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+.done-todo {
+  text-decoration: line-through;
+}
 </style>
