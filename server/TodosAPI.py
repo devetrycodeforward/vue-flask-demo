@@ -1,14 +1,8 @@
 from flask import Blueprint, jsonify, request
 from sqlAlchemy_db_instance import db
+from models import Todo
 
 todos_api = Blueprint('todos_api', __name__)
-
-
-class Todo(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    item = db.Column(db.String(500))
-    done = db.Column(db.Boolean)
-
 
 @todos_api.route('/todos', methods=['GET'])
 def serve_all_todos():
