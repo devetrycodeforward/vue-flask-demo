@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 
-todos = ['Study Vue', 'Study Flask', 'Study Toy Problems']
+todos = [{"item": "Study SQL", "id": 0, "done": False }]
 
 todos_api = Blueprint('todos_api', __name__)
 
@@ -11,6 +11,6 @@ def serve_all_todos():
 
 @todos_api.route('/todo', methods=['POST'])
 def add_todo():
-    todos.append(request.json["item"])
+    todos.append({"item": request.json["item"], "id": 0, "done": False })
     print(todos)
     return jsonify(success=True)

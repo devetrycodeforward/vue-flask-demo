@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>{{ title }}</h1>
     <ul>
-      <li v-for="todo in todos"> {{ todo }}</li>
+      <li v-for="todo in todos"> {{ todo.item }}</li>
     </ul>
     <input v-model="inputValue"/>
     <button @click="handleAddTodoClick">Add New Todo</button>
