@@ -1,4 +1,4 @@
-from sqlAlchemy_db_instance import db
+from sql_alchemy_db_instance import db
 
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)

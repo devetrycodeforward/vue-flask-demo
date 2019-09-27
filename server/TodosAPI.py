@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from sqlAlchemy_db_instance import db
+from sql_alchemy_db_instance import db
 from models import Todo
 
 todos_api = Blueprint('todos_api', __name__)
@@ -24,7 +24,6 @@ def toggle_done():
     todo_id = request.json["id"]
     target_todo = db.session.query(Todo).filter_by(id=todo_id).first()
     target_todo.done = not target_todo.done
-    print(target_todo.item, target_todo.done)
     db.session.add(target_todo)
     db.session.commit()
     return jsonify(success=True)

@@ -10,8 +10,8 @@
 - **In a new tab**:
     - `cd server`
     - `pipenv install`
-    - `pipenv run python app.py`
+    - `pipenv run python main.py`
 
 ### Video Code Along:
 
-- [Google Drive Folder: 4 Parts](https://drive.google.com/drive/u/1/folders/181eR9eEgzrKf6oynVs5WZWTFiKZvsF8M)
+- [Google Drive Folder: 5 Parts](https://drive.google.com/drive/u/1/folders/181eR9eEgzrKf6oynVs5WZWTFiKZvsF8M)
