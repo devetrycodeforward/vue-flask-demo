@@ -13,4 +13,5 @@
     - `pipenv run python app.py`
 
 ### Video Code Along:
-    - https://drive.google.com/drive/u/1/folders/181eR9eEgzrKf6oynVs5WZWTFiKZvsF8M
+
+- [Google Drive Folder: 4 Parts](https://drive.google.com/drive/u/1/folders/181eR9eEgzrKf6oynVs5WZWTFiKZvsF8M)
