@@ -27,3 +27,10 @@ def toggle_done():
     db.session.add(target_todo)
     db.session.commit()
     return jsonify(success=True)
+
+@todos_api.route('/todo/<int:todo_id>', methods=['DELETE'])
+def delete_todo(todo_id):
+    target_todo = db.session.query(Todo).filter_by(id=todo_id).first()
+    db.session.delete(target_todo)
+    db.session.commit()
+    return jsonify(success=True)
