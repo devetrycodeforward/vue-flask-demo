@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>{{ title }}</h1>
     <ul>
-      <li v-bind:class="{ 'done-todo': todo.done }" v-for="todo in todos" v-bind:key="todo.id" @click="toggleTodo(todo.id)"> {{ todo.item }}</li>
+      <TodoItem v-for="todo in todos" :key="todo.id" :todo="todo" :getAllTodos="getAllTodos" />
     </ul>
     <input v-model="inputValue"/>
     <button @click="handleAddTodoClick">Add New Todo</button>
@@ -11,13 +11,17 @@
 
 <script>
 import axios from 'axios';
+import TodoItem from './TodoItem.vue';
 
 export default {
   name: 'TodoList',
   props: ['title'],
+  components: {
+    TodoItem
+  },
   data() {
     return {
-      todos: [],
+      todos: ['apple'],
       inputValue: ''
     }
   },
@@ -29,10 +33,6 @@ export default {
       axios.post('/todo', { item: this.inputValue } )
         .then(() => this.getAllTodos());
       this.inputValue = '';
-    },
-    toggleTodo(id) {
-      axios.patch('/todo', {id: id})
-      .then(() => this.getAllTodos())
     }
   },
   mounted() {
