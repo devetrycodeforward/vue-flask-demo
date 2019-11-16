@@ -58,8 +58,8 @@ RUN_ENVIRONMENT=
     - Run `git add .`
     - Run `git commit -m "temporarily un-ignore dist folder for heroku deployment"`
 
-- Let's now get our app up on the Herku servers
-    - Run `git push heroku master`
+- Let's now get our server directory up on the Herku servers
+    - Run `git subtree push --prefix server heroku master`
 - And allocate some resources to run our app
     - Run `heroku ps:scale web=1`
 
