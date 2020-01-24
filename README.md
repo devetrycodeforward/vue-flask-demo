@@ -78,4 +78,18 @@ RUN_ENVIRONMENT=
     - Run `git rm -rf --cached .`
     - Run `git add .`
     - Run `git commit -m "Re-ignore dist folder after heroku deployment"`
+    
+### Redeploying to Heroku (After making changes):
+
+- TEMPORARILY un-gitignore our `server/dist` folder
+    - Remove `server/dist` from your .gitignore
+    - Run `git add .`
+    - Run `git commit -m "temporarily un-ignore dist folder for heroku deployment"`
+- Let's now repush our server directory up on the Herku servers
+    - Run `git subtree push --prefix server heroku master`
+- __VERY IMPORTANT__: Re-ignore your `server/dist` folder:
+    - Add `server/dist` back to your .gitignore 
+    - Run `git rm -rf --cached .`
+    - Run `git add .`
+    - Run `git commit -m "Re-ignore dist folder after heroku deployment"`
 
